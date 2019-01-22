@@ -54,9 +54,9 @@
             <a href="<?php echo site_url('artikel');?>"><span class="title">Artikel</span></a>
             <span class=" icon-thumbnail"><i class="pg-form"></i></span>
           </li><br>
-          <li class="open active">
+          <li>
             <a href="javascript:;"><span class="title">Daftar</span>
-            <span class="open arrow"></span></a>
+            <span class=" arrow"></span></a>
             <span class="icon-thumbnail"><i class="pg-note"></i></span>
             <ul class="sub-menu">
               <li class="">
@@ -69,9 +69,9 @@
               </li>
             </ul>
           </li><br>
-          <li>
+          <li class="open active">
             <a href="javascript:;"><span class="title">Laporan</span>
-            <span class=" arrow"></span></a>
+            <span class="open arrow"></span></a>
             <span class="icon-thumbnail"><i class="pg-charts"></i></span>
             <ul class="sub-menu">
               <li class="">
@@ -89,7 +89,7 @@
             <span class=" arrow"></span></a>
             <span class="icon-thumbnail"><i class="pg-calender"></i></span>
             <ul class="sub-menu">
-              
+
               <li class="">
                 <a href="<?php echo site_url('jumat');?>">Jum'at</a>
                 <span class="icon-thumbnail">J</span>
@@ -130,7 +130,7 @@
         </div>
       </div>
       <!-- END HEADER -->
-      <!-- START PAGE CONTENT WRAPPER -->
+   	  <!-- START PAGE CONTENT WRAPPER -->
       <div class="page-content-wrapper ">
         <!-- START PAGE CONTENT -->
         <div class="content sm-gutter">
@@ -141,54 +141,49 @@
                 <div class="card card-transparent">
                   <div class="card-header">
                     <div class="card-title">
-                      <h4>Data Ustadz</h4>
+                      <h4>Laporan Keuangan</h4>
                     </div>
                     <div class="pull-right">
-                      <div class="col-xs-12">
-                        <a href="<?php echo site_url('ustadz/tambah');?>" class="btn btn-complete btn-cons">Tambah Daftar</a>
-                      </div>
+                    	<div class="col-xs-12">
+                    		<a href="<?php echo site_url('keuangan/tambah');?>" class="btn btn-complete btn-cons">Tambah Laporan</a>
+                    	</div>
                     </div>
                     <div class="clearfix"></div>
                   </div>
                   <div class="card-block">
+                  <p class="font-montserrat">Total :</p>
                     <table class="table demo-table-search table-responsive-block" id="tableWithSearch">
-                      <thead>
-                        <tr>
-                          <th>No</th>
-                          <th>Nama</th>
-                          <th>Tempat / Tanggal Lahir</th>
-                          <th>Alamat</th>
-                          <th>No Handphone</th>
-                          <th>Email</th>
-                          <th>Pendidikan</th>
-                          <th>Opsi</th>
-                        </tr>
-                      </thead>
-                      <?php 
-                        $no = 1;
-                        foreach ($data_artikel as $key => $value)
-                        {
-                      ?>
-                      <tbody>
-                        <tr>
-                          <td><?php echo $no++; ?></td>
-                          <td><?php echo $value->nama; ?></td>
-                          <td><?php echo $value->tempat_tanggal_lahir; ?></td>
-                          <td><?php echo $value->alamat; ?></td>
-                          <td><?php echo $value->no_hp; ?></td>
-                          <td><?php echo $value->email; ?></td>
-                          <td><?php echo $value->pendidikan; ?></td>
-                          <td>
+                    	<thead>
+                    		<tr>
+                    			<th>No</th>
+                    			<th>Keterangan</th>
+                          <th>Tanggal</th>
+                    			<th>Nominal</th>
+                    			<th>Opsi</th>
+                    		</tr>
+                    	</thead>
+                    	<?php 
+                    		$no = 1;
+                    		foreach ($data_artikel as $key => $value)
+                    		{
+                    	?>
+                    	<tbody>
+                    		<tr>
+                    			<td><?php echo $no++; ?></td>
+                    			<td><?php echo $value->keterangan; ?></td>
+                    			<td><?php echo $value->tanggal; ?></td>
+                          <td><?php echo $value->nominal; ?></td>
+                    			<td>
                             <div class="btn-group">
-                            <a href="<?php echo site_url('ustadz/ubah/'.$value->id_ustadz); ?>" class="btn btn-success btn-xs">Ubah</a>
-                            <a href="<?php echo site_url('ustadz/hapus/'.$value->id_ustadz); ?>" class="btn btn-danger btn-xs">Hapus</a>
+                    				<a href="<?php echo site_url('keuangan/ubah/'.$value->id_keuangan); ?>" class="btn btn-success btn-xs">Ubah</a>
+                    				<a href="<?php echo site_url('keuangan/hapus/'.$value->id_keuangan); ?>" class="btn btn-danger btn-xs">Hapus</a>
                             </div>
                           </td>
-                        </tr>
-                      </tbody>
-                      <?php 
-                        }
-                      ?>
+                    		</tr>
+                    	</tbody>
+                    	<?php 
+                    		}
+                    	?>
                     </table>
                   </div>
                 </div>
@@ -198,7 +193,7 @@
           <!-- END CONTAINER FLUID -->
         </div>
         <!-- END PAGE CONTENT -->
-      <!-- START CONTAINER FLUID -->
+    	<!-- START CONTAINER FLUID -->
         <footer>
         <div class=" container-fluid  container-fixed-lg footer">
           <!-- START COPYRIGHT -->

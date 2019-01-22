@@ -17,12 +17,12 @@
     <link href="<?php echo base_url('assets/plugins/jquery-scrollbar/jquery.scrollbar.css');?>" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo base_url('assets/plugins/select2/css/select2.min.css');?>" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo base_url('assets/plugins/switchery/css/switchery.min.css');?>" rel="stylesheet" type="text/css" media="screen" />
-    <link href="<?php echo base_url('assets/plugins/nvd3/nv.d3.min.css');?>" rel="stylesheet" type="text/css" media="screen" />
-    <link href="<?php echo base_url('assets/plugins/mapplic/css/mapplic.css');?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('assets/plugins/rickshaw/rickshaw.min.css');?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('assets/plugins/jquery-datatable/media/css/dataTables.bootstrap.min.css');?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css');?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('assets/plugins/datatables-responsive/css/datatables.responsive.css');?>" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<?php echo base_url('assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.min.css');?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('assets/plugins/bootstrap-tag/bootstrap-tagsinput.css');?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('assets/plugins/dropzone/css/dropzone.css');?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('assets/plugins/bootstrap-datepicker/css/datepicker3.css');?>" rel="stylesheet" type="text/css" media="screen">
+    <link href="<?php echo base_url('assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css');?>" rel="stylesheet" type="text/css" media="screen">
+    <link href="<?php echo base_url('assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css');?>" rel="stylesheet" type="text/css" media="screen">
     <link href="<?php echo base_url('pages/css/pages-icons.css');?>" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="<?php echo base_url('pages/css/themes/corporate.css');?>" rel="stylesheet" type="text/css" />
   </head>
@@ -54,9 +54,9 @@
             <a href="<?php echo site_url('artikel');?>"><span class="title">Artikel</span></a>
             <span class=" icon-thumbnail"><i class="pg-form"></i></span>
           </li><br>
-          <li class="open active">
+          <li>
             <a href="javascript:;"><span class="title">Daftar</span>
-            <span class="open arrow"></span></a>
+            <span class=" arrow"></span></a>
             <span class="icon-thumbnail"><i class="pg-note"></i></span>
             <ul class="sub-menu">
               <li class="">
@@ -69,9 +69,9 @@
               </li>
             </ul>
           </li><br>
-          <li>
+          <li class="open active">
             <a href="javascript:;"><span class="title">Laporan</span>
-            <span class=" arrow"></span></a>
+            <span class="open arrow"></span></a>
             <span class="icon-thumbnail"><i class="pg-charts"></i></span>
             <ul class="sub-menu">
               <li class="">
@@ -84,12 +84,12 @@
               </li>
             </ul>
           </li><br>
-          <li>
+          <li >
             <a href="javascript:;"><span class="title">Jadwal</span>
             <span class=" arrow"></span></a>
             <span class="icon-thumbnail"><i class="pg-calender"></i></span>
             <ul class="sub-menu">
-              
+
               <li class="">
                 <a href="<?php echo site_url('jumat');?>">Jum'at</a>
                 <span class="icon-thumbnail">J</span>
@@ -141,55 +141,38 @@
                 <div class="card card-transparent">
                   <div class="card-header">
                     <div class="card-title">
-                      <h4>Data Ustadz</h4>
-                    </div>
-                    <div class="pull-right">
-                      <div class="col-xs-12">
-                        <a href="<?php echo site_url('ustadz/tambah');?>" class="btn btn-complete btn-cons">Tambah Daftar</a>
-                      </div>
+                      <h4>Tambah Laporan Infaq</h4>
                     </div>
                     <div class="clearfix"></div>
                   </div>
                   <div class="card-block">
-                    <table class="table demo-table-search table-responsive-block" id="tableWithSearch">
-                      <thead>
-                        <tr>
-                          <th>No</th>
-                          <th>Nama</th>
-                          <th>Tempat / Tanggal Lahir</th>
-                          <th>Alamat</th>
-                          <th>No Handphone</th>
-                          <th>Email</th>
-                          <th>Pendidikan</th>
-                          <th>Opsi</th>
-                        </tr>
-                      </thead>
-                      <?php 
-                        $no = 1;
-                        foreach ($data_artikel as $key => $value)
-                        {
-                      ?>
-                      <tbody>
-                        <tr>
-                          <td><?php echo $no++; ?></td>
-                          <td><?php echo $value->nama; ?></td>
-                          <td><?php echo $value->tempat_tanggal_lahir; ?></td>
-                          <td><?php echo $value->alamat; ?></td>
-                          <td><?php echo $value->no_hp; ?></td>
-                          <td><?php echo $value->email; ?></td>
-                          <td><?php echo $value->pendidikan; ?></td>
-                          <td>
-                            <div class="btn-group">
-                            <a href="<?php echo site_url('ustadz/ubah/'.$value->id_ustadz); ?>" class="btn btn-success btn-xs">Ubah</a>
-                            <a href="<?php echo site_url('ustadz/hapus/'.$value->id_ustadz); ?>" class="btn btn-danger btn-xs">Hapus</a>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                      <?php 
-                        }
-                      ?>
-                    </table>
+                  <form class="form-horizontal" method="post" action="<?php echo site_url('admin/infaq/save'); ?>">
+                    <br>
+                    <div class="control-group col-lg-4">
+                      <label class="control-label">Nama</label>
+                      <input type="text" name="nama" value="<?php echo set_value('nama');?>" class="form-control" required>
+                      <?php echo form_error('nama'); ?>
+                    </div>                    
+                    <div class="control-group col-lg-4">   
+                      <label class="control-label">Tanggal</label>
+                      <div class="input-group p-l-0">
+                      <input type="text" name="tanggal" class="form-control"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                      <?php echo form_error('tanggal'); ?>
+                    </div>                    
+                    <div class="control-group col-lg-4">
+                      <label class="control-label">Nominal</label>
+                      <input type="text" name="nominal" class="form-control" required>
+                      <?php echo form_error('nominal'); ?>
+                    </div>
+                    <br>
+                    <div class="control-group col-lg-3">
+                      <div class="controls">
+                        <input type="submit" name="btnSubmit" class="btn btn-primary" value="Simpan">
+                        <a href="<?php echo site_url('infaq'); ?>" class="btn btn-danger">Kembali</a>
+                      </div>
+                    </div>
+                  </form>
                   </div>
                 </div>
               </div>
@@ -198,7 +181,7 @@
           <!-- END CONTAINER FLUID -->
         </div>
         <!-- END PAGE CONTENT -->
-      <!-- START CONTAINER FLUID -->
+        <!-- START CONTAINER FLUID -->
         <footer>
         <div class=" container-fluid  container-fixed-lg footer">
           <!-- START COPYRIGHT -->
@@ -222,6 +205,7 @@
     </div>
     <!-- END PAGE CONTAINER -->
     <!-- BEGIN VENDOR JS -->
+    
     <script src="<?php echo base_url('assets/plugins/pace/pace.min.js');?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/plugins/jquery/jquery-1.11.1.min.js');?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/plugins/modernizr.custom.js');?>" type="text/javascript"></script>
@@ -233,21 +217,30 @@
     <script src="<?php echo base_url('assets/plugins/jquery-ios-list/jquery.ioslist.min.js');?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/plugins/jquery-actual/jquery.actual.min.js');?>"></script>
     <script src="<?php echo base_url('assets/plugins/jquery-scrollbar/jquery.scrollbar.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/plugins/select2/js/select2.full.min.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/classie/classie.js');?>" type="text/javascript"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/select2/js/select2.full.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/classie/classie.js');?>"></script>
     <script src="<?php echo base_url('assets/plugins/switchery/js/switchery.min.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/jquery-datatable/media/js/jquery.dataTables.min.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/jquery-datatable/extensions/TableTools/js/dataTables.tableTools.min.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/jquery-datatable/media/js/dataTables.bootstrap.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/jquery-datatable/extensions/Bootstrap/jquery-datatable-bootstrap.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/datatables-responsive/js/datatables.responsive.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/datatables-responsive/js/lodash.min.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/jquery-autonumeric/autoNumeric.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/dropzone/dropzone.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/jquery-inputmask/jquery.inputmask.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-form-wizard/js/jquery.bootstrap.wizard.min.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/jquery-validation/js/jquery.validate.min.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/summernote/js/summernote.min.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/moment/moment.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-daterangepicker/daterangepicker.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-typehead/typeahead.bundle.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-typehead/typeahead.jquery.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/handlebars/handlebars-v4.0.5.js');?>"></script>
     <!-- END VENDOR JS -->
     <!-- BEGIN CORE TEMPLATE JS -->
     <script src="<?php echo base_url('pages/js/pages.min.js');?>"></script>
     <!-- END CORE TEMPLATE JS -->
     <!-- BEGIN PAGE LEVEL JS -->
-    <script src="<?php echo base_url('assets/js/datatables.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/js/form_elements.js');?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/js/scripts.js');?>" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS -->
   </body>

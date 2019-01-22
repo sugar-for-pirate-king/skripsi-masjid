@@ -17,13 +17,12 @@
     <link href="<?php echo base_url('assets/plugins/jquery-scrollbar/jquery.scrollbar.css');?>" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo base_url('assets/plugins/select2/css/select2.min.css');?>" rel="stylesheet" type="text/css" media="screen" />
     <link href="<?php echo base_url('assets/plugins/switchery/css/switchery.min.css');?>" rel="stylesheet" type="text/css" media="screen" />
-    <link href="<?php echo base_url('assets/plugins/nvd3/nv.d3.min.css');?>" rel="stylesheet" type="text/css" media="screen" />
-    <link href="<?php echo base_url('assets/plugins/mapplic/css/mapplic.css');?>" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url('assets/plugins/rickshaw/rickshaw.min.css');?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.min.css');?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/plugins/bootstrap-tag/bootstrap-tagsinput.css');?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/plugins/dropzone/css/dropzone.css');?>" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url('assets/plugins/bootstrap-datepicker/css/datepicker3.css');?>" rel="stylesheet" type="text/css" media="screen">
+    <link href="<?php echo base_url('assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css');?>" rel="stylesheet" type="text/css" media="screen">
+    <link href="<?php echo base_url('assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css');?>" rel="stylesheet" type="text/css" media="screen">
     <link href="<?php echo base_url('pages/css/pages-icons.css');?>" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="<?php echo base_url('pages/css/themes/corporate.css');?>" rel="stylesheet" type="text/css" />
   </head>
@@ -70,9 +69,9 @@
               </li>
             </ul>
           </li><br>
-          <li>
+          <li class="open active">
             <a href="javascript:;"><span class="title">Laporan</span>
-            <span class=" arrow"></span></a>
+            <span class="open arrow"></span></a>
             <span class="icon-thumbnail"><i class="pg-charts"></i></span>
             <ul class="sub-menu">
               <li class="">
@@ -85,23 +84,17 @@
               </li>
             </ul>
           </li><br>
-          <li class="open active">
+          <li >
             <a href="javascript:;"><span class="title">Jadwal</span>
-            <span class="open arrow"></span></a>
+            <span class=" arrow"></span></a>
             <span class="icon-thumbnail"><i class="pg-calender"></i></span>
             <ul class="sub-menu">
-              <li class="">
-                <a href="<?php echo site_url('shalat');?>">Shalat</a>
-                <span class="icon-thumbnail">S</span>
-              </li>
+
               <li class="">
                 <a href="<?php echo site_url('jumat');?>">Jum'at</a>
                 <span class="icon-thumbnail">J</span>
               </li>
-              <li class="">
-                <a href="<?php echo site_url('ramadhan');?>">Ramadhan</a>
-                <span class="icon-thumbnail">R</span>
-              </li>
+
             </ul>
           </li><br>
           <li class="">
@@ -130,7 +123,7 @@
           </div>
         </div>
         <div class="">
-          <a href="<?php echo site_url('admin/auth/logout');?>">
+          <a href="<?php echo site_url('logout');?>">
             <span class="">Logout</span>
             <span class=""><i class="pg-power"></i></span>
           </a>
@@ -148,58 +141,53 @@
                 <div class="card card-transparent">
                   <div class="card-header">
                     <div class="card-title">
-                      <h4>Tambah Jadwal Shalat per Bulan</h4>
+                      <h4>Tambah Laporan Keuangan</h4>
                     </div>
                     <div class="clearfix"></div>
                   </div>
                   <div class="card-block">
-                  <form class="form-horizontal" method="post" action="<?php echo site_url('admin/shalat/save_per_bulan'); ?>">
-                    <div class="control-group">
-                      <label class="control-label">Bulan</label>
-                      <div class="">
-                      <select name="bulan" class="form-control">
-                        <option value="1"> Januari </option>
-                        <option value="2"> Februari </option>
-                        <option value="3"> Maret </option>
-                        <option value="4"> April </option>
-                        <option value="5"> Mei </option>
-                        <option value="6"> Juni </option>
-                        <option value="7"> Juli </option>
-                        <option value="8"> Agustus </option>
-                        <option value="9"> September </option>
-                        <option value="10"> Oktober </option>
-                        <option value="11"> November </option>
-                        <option value="12"> Desember </option>                          
-                      </select>
-                      </div>
+                  <div class="row">
+                  <div class="col-lg-3">
+                  <form class="form" method="post" action="<?php echo site_url('admin/keuangan/save'); ?>">
+                    <br>
+                    <div class="form-group">
+                      <label class="">Keterangan</label>
+                      <input type="text" name="keterangan" value="<?php echo set_value('keterangan');?>" class="form-control" required>
                     </div>
-                    <div class="control-group">
-                      <label class="control-label">Tahun</label>
-                      <div class="">
-                      <select name="tahun" class="form-control">
-                        <option value="1"> 2019 </option>
-                        <option value="2"> 2020 </option>
-                        <option value="3"> 2021 </option>
-                        <option value="4"> 2022 </option>
-                        <option value="5"> 2023 </option>
-                        <option value="6"> 2024 </option>
-                        <option value="7"> 2025 </option>
-                        <option value="8"> 2026 </option>
-                        <option value="9"> 2027 </option>
-                        <option value="10"> 2028 </option>
-                        <option value="11"> 2029 </option>
-                        <option value="12"> 2030 </option>                          
+                    <div class="form-group">   
+                      <label class="">Tanggal</label>
+                      <div class="input-group p-l-0">
+                      <input type="text" name="tanggal" value="<?php echo set_value('tanggal');?>" class="form-control" required><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                    </div>                    
+                    <div class="row">
+                    <div class="col-lg-9">
+                    <div class="form-group">
+                      <label class="">Nominal</label>
+                      <input type="text" name="nominal" value="<?php echo set_value('nominal');?>" class="form-control" required>
+                    </div>
+                    </div>
+                    <div class="col-lg-3">
+                    <div class="form-group">
+                      <label>Aturan</label>
+                      <select name="aturan" class="form-control" required><span class="input-group-addon"><i class="fa fa-angle-down">
+                        <option value="1" selected> + </option>
+                        <option value="2"> - </option>
+                        </i></span> 
                       </select>
-                      </div>
+                    </div>
+                    </div>
                     </div>
                     <br>
-                    <div class="control-group">
+                    <div class="form-group">
                       <div class="controls">
                         <input type="submit" name="btnSubmit" class="btn btn-primary" value="Simpan">
-                        <a href="<?php echo site_url('shalat'); ?>" class="btn btn-danger">Kembali</a>
+                        <a href="<?php echo site_url('keuangan'); ?>" class="btn btn-danger">Kembali</a>
                       </div>
                     </div>
                   </form>
+                  </div>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -213,14 +201,13 @@
         <div class=" container-fluid  container-fixed-lg footer">
           <!-- START COPYRIGHT -->
           <div class="copyright sm-text-center">
-            <p class="small no-margin pull-left sm-pull-reset">
-              <span class="hint-text">Copyright &copy; 2017 </span>
-              <span class="font-montserrat">REVOX</span>.
+            <p class="small no-margin text-center">
+              <span class="hint-text">Copyright &copy; 2018 </span>
+              <span class="font-montserrat">Website Administrator Masjid Al-Hanif</span>.
               <span class="hint-text">All rights reserved. </span>
-              <span class="sm-block"><a href="#" class="m-l-10 m-r-10">Terms of use</a> <span class="muted">|</span> <a href="#" class="m-l-10">Privacy Policy</a></span>
             </p>
-            <p class="small no-margin pull-right sm-pull-reset">
-              Hand-crafted <span class="hint-text">&amp; made with Love</span>
+            <p class="small no-margin text-center">
+              <span class="hint-text">Made with <i class="fa fa-heart"></i> by Handika</span>
             </p>
             <div class="clearfix"></div>
           </div>
@@ -249,30 +236,26 @@
     <script type="text/javascript" src="<?php echo base_url('assets/plugins/classie/classie.js');?>"></script>
     <script src="<?php echo base_url('assets/plugins/switchery/js/switchery.min.js');?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/plugins/bootstrap3-wysihtml5/bootstrap3-wysihtml5.all.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/jquery-autonumeric/autoNumeric.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/plugins/dropzone/dropzone.min.js');?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/plugins/bootstrap-tag/bootstrap-tagsinput.min.js');?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/plugins/jquery-inputmask/jquery.inputmask.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-form-wizard/js/jquery.bootstrap.wizard.min.js');?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/plugins/jquery-validation/js/jquery.validate.min.js');?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/nvd3/lib/d3.v3.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/nvd3/nv.d3.min.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/nvd3/src/utils.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/nvd3/src/tooltip.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/nvd3/src/interactiveLayer.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/nvd3/src/models/axis.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/nvd3/src/models/line.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/nvd3/src/models/lineWithFocusChart.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/mapplic/js/hammer.js');?>"></script>
-    <script src="<?php echo base_url('assets/plugins/mapplic/js/jquery.mousewheel.js');?>"></script>
-    <script src="<?php echo base_url('assets/plugins/mapplic/js/mapplic.js');?>"></script>
-    <script src="<?php echo base_url('assets/plugins/rickshaw/rickshaw.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/plugins/jquery-sparkline/jquery.sparkline.min.js');?>" type="text/javascript"></script>
-    <script src="<?php echo base_url('assets/plugins/skycons/skycons.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/summernote/js/summernote.min.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/moment/moment.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-daterangepicker/daterangepicker.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-typehead/typeahead.bundle.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/bootstrap-typehead/typeahead.jquery.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/plugins/handlebars/handlebars-v4.0.5.js');?>"></script>
     <!-- END VENDOR JS -->
     <!-- BEGIN CORE TEMPLATE JS -->
     <script src="<?php echo base_url('pages/js/pages.min.js');?>"></script>
     <!-- END CORE TEMPLATE JS -->
     <!-- BEGIN PAGE LEVEL JS -->
-    <script src="<?php echo base_url('assets/js/dashboard.js');?>" type="text/javascript"></script>
+    <script src="<?php echo base_url('assets/js/form_elements.js');?>" type="text/javascript"></script>
     <script src="<?php echo base_url('assets/js/scripts.js');?>" type="text/javascript"></script>
     <!-- END PAGE LEVEL JS -->
   </body>

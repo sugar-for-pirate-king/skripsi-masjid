@@ -90,18 +90,12 @@
             <span class=" arrow"></span></a>
             <span class="icon-thumbnail"><i class="pg-calender"></i></span>
             <ul class="sub-menu">
-              <li class="">
-                <a href="<?php echo site_url('shalat');?>">Shalat</a>
-                <span class="icon-thumbnail">S</span>
-              </li>
+
               <li class="">
                 <a href="<?php echo site_url('jumat');?>">Jum'at</a>
                 <span class="icon-thumbnail">J</span>
               </li>
-              <li class="">
-                <a href="<?php echo site_url('ramadhan');?>">Ramadhan</a>
-                <span class="icon-thumbnail">R</span>
-              </li>
+
             </ul>
           </li><br>
           <li class="">
@@ -130,7 +124,7 @@
           </div>
         </div>
         <div class="">
-          <a href="<?php echo site_url('admin/auth/logout');?>">
+          <a href="<?php echo site_url('logout');?>">
             <span class="">Logout</span>
             <span class=""><i class="pg-power"></i></span>
           </a>
@@ -211,14 +205,13 @@
         <div class=" container-fluid  container-fixed-lg footer">
           <!-- START COPYRIGHT -->
           <div class="copyright sm-text-center">
-            <p class="small no-margin pull-left sm-pull-reset">
-              <span class="hint-text">Copyright &copy; 2017 </span>
-              <span class="font-montserrat">REVOX</span>.
+            <p class="small no-margin text-center">
+              <span class="hint-text">Copyright &copy; 2018 </span>
+              <span class="font-montserrat">Website Administrator Masjid Al-Hanif</span>.
               <span class="hint-text">All rights reserved. </span>
-              <span class="sm-block"><a href="#" class="m-l-10 m-r-10">Terms of use</a> <span class="muted">|</span> <a href="#" class="m-l-10">Privacy Policy</a></span>
             </p>
-            <p class="small no-margin pull-right sm-pull-reset">
-              Hand-crafted <span class="hint-text">&amp; made with Love</span>
+            <p class="small no-margin text-center">
+              <span class="hint-text">Made with <i class="fa fa-heart"></i> by Handika</span>
             </p>
             <div class="clearfix"></div>
           </div>
