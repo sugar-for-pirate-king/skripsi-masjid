@@ -151,7 +151,12 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="card-block">
-                  <p class="font-montserrat">Total :</p>
+                 <?php 
+                    foreach ($data_artikel2 as $key)
+                        {
+                    ?>
+                  <p class="font-montserrat">Total : <?php echo $key->nominal; ?></p>
+                <?php } ?>
                     <table class="table demo-table-search table-responsive-block" id="tableWithSearch">
                     	<thead>
                     		<tr>

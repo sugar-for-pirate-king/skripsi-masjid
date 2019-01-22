@@ -1,4 +1,4 @@
-<?php
+<?php 
 class Keuangan_model extends CI_model {
 
 	public function __construct()
@@ -10,6 +10,14 @@ class Keuangan_model extends CI_model {
 	public function get_all()
 	{
 		return $this->db->get('tb_keuangan');
+	}
+	public function sum()
+	{
+	$this->db->select_sum('nominal');
+	$this->db->from('tb_keuangan');
+	return $this->db->get();
+
+
 	}
 
 	public function is_LoggedIn()

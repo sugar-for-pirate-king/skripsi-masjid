@@ -10,7 +10,7 @@ class Keuangan extends CI_Controller {
 	}
 
 	public function index()
-	{
+	{ 
 		if(!$this->keuangan_model->is_LoggedIn())
 		{
 			redirect('login');
@@ -18,8 +18,10 @@ class Keuangan extends CI_Controller {
 
 		$data = $this->keuangan_model->get_all();
 		$artikel = $data->result();
+		$data2 = $this->keuangan_model->sum();
+		$artikel2 = $data2->result();
 
-		$this->load->view('admin/pages/hal_keuangan', array('data_artikel' => $artikel));
+		$this->load->view('admin/pages/hal_keuangan', array('data_artikel' => $artikel,'data_artikel2' => $artikel2));
 	}
 
 	public function add()
