@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['login'] 						= 'admin/auth/login';
 $route['logout']						= 'admin/auth/logout';
 $route['beranda']						= 'admin/admin';
-
+ 
 $route['artikel']				     	= 'admin/artikel';
 $route['artikel/tambah'] 			 	= 'admin/artikel/add';
 $route['artikel/ubah/(:any)'] 		  	= 'admin/artikel/edit/$1';

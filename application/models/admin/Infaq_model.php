@@ -12,6 +12,15 @@ class Infaq_model extends CI_model {
 		return $this->db->get('tb_infaq');
 	}
 
+	public function sum()
+	{
+	$this->db->select_sum('nominal');
+	$this->db->from('tb_infaq');
+	return $this->db->get();
+
+
+	}
+
 	public function is_LoggedIn()
 	{
 		if(!isset($_SESSION['logged_in']))
@@ -28,7 +37,8 @@ class Infaq_model extends CI_model {
 		return $this->db->get('tb_infaq');
 	}
 
-	public function input_data($data)
+
+	public function input_data($data) 
 	{
 		return $this->db->insert('tb_infaq', $data);
 	}

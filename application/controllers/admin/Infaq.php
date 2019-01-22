@@ -19,7 +19,11 @@ class Infaq extends CI_Controller {
 		$data = $this->infaq_model->get_all();
 		$artikel = $data->result();
 
-		$this->load->view('admin/pages/hal_infaq', array('data_artikel' => $artikel));
+		$data2 = $this->infaq_model->sum();
+		$artikel2 = $data2->result();
+
+
+		$this->load->view('admin/pages/hal_infaq', array('data_artikel' => $artikel,'data_artikel2' => $artikel2));
 	}
 
 	public function add()
@@ -41,17 +45,17 @@ class Infaq extends CI_Controller {
 		{
 			redirect('infaq');
 		}
-	}
+	} 
 	
 	public function save()
 	{	
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('tanggal', 'Tanggal', 'required');
-		$this->form_validation->set_rules('nominal', 'Nominal', 'required|decimal');
+		$this->form_validation->set_rules('nominal', 'Nominal', 'required');
 
-		$nominal = $this->input->post('nominal');
-		$jumlah_awal = 0;
-		$jumlah = $jumlah_awal + $nominal;
+		// $nominal = $this->input->post('nominal');
+		// $jumlah_awal = 0;
+		// $jumlah = $jumlah_awal + $nominal;
 		
 
 		if($this->form_validation->run() == TRUE)
@@ -60,7 +64,7 @@ class Infaq extends CI_Controller {
 		 	$data['nama'] 		= $this->input->post('nama');
 		 	$data['tanggal'] 	= $this->input->post('tanggal');
 	      	$data['nominal']	= $this->input->post('nominal');
-	      	$data['jumlah']		= $jumlah;
+	      	// $data['jumlah']		= $jumlah;
 
 			$this->infaq_model->input_data($data);
         	redirect('infaq');

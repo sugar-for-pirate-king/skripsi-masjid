@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['base_url'] = 'http://localhost:81/web_skripsi';
+$config['base_url'] = 'http://localhost/skripsi-masjid';
 
 $config['index_page'] = '';
 
