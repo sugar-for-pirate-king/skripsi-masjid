@@ -2,45 +2,80 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*-----------------Route Admin------------------------*/ 
-$route['login'] 						= 'admin/auth/login';
-$route['logout']						= 'admin/auth/logout';
-$route['beranda']						= 'admin/admin';
+$route['login'] 							= 'auth/login';
+$route['logout']							= 'auth/logout';
+$route['admin/beranda']						= 'admin';
 
-$route['artikel']				     	= 'admin/artikel';
-$route['artikel/tambah'] 			 	= 'admin/artikel/add';
-$route['artikel/ubah/(:any)'] 		  	= 'admin/artikel/edit/$1';
-$route['artikel/hapus/(:any)/(:any)']	= 'admin/artikel/delete/$1/$2';
-$route['artikel/lihat/(:any)']		  	= 'admin/artikel/read/$1';
+$route['admin/artikel']				     	= 'artikel';
+$route['admin/artikel/tambah'] 			 	= 'artikel/add';
+$route['admin/artikel/ubah/(:any)'] 		= 'artikel/edit/$1';
+$route['admin/artikel/hapus/(:any)/(:any)']	= 'artikel/delete/$1/$2';
+$route['admin/artikel/lihat/(:any)']		= 'artikel/read/$1';
 
-$route['pengurus']						= 'admin/pengurus';
-$route['pengurus/tambah'] 				= 'admin/pengurus/add';
-$route['pengurus/ubah/(:any)'] 			= 'admin/pengurus/edit/$1';
-$route['pengurus/hapus/(:any)'] 		= 'admin/pengurus/delete/$1';
+$route['admin/pengurus']					= 'pengurus';
+$route['admin/pengurus/tambah'] 			= 'pengurus/add';
+$route['admin/pengurus/ubah/(:any)'] 		= 'pengurus/edit/$1';
+$route['admin/pengurus/hapus/(:any)'] 		= 'pengurus/delete/$1';
 
-$route['ustadz']						= 'admin/ustadz';
-$route['ustadz/tambah'] 				= 'admin/ustadz/add';
-$route['ustadz/ubah/(:any)'] 			= 'admin/ustadz/edit/$1';
-$route['ustadz/hapus/(:any)'] 			= 'admin/ustadz/delete/$1';
+$route['admin/ustadz']						= 'ustadz';
+$route['admin/ustadz/tambah'] 				= 'ustadz/add';
+$route['admin/ustadz/ubah/(:any)'] 			= 'ustadz/edit/$1';
+$route['admin/ustadz/hapus/(:any)'] 		= 'ustadz/delete/$1';
 
-$route['infaq']							= 'admin/infaq';
-$route['infaq/tambah']					= 'admin/infaq/add';
-$route['infaq/ubah/(:any)']				= 'admin/infaq/edit/$1';
-$route['infaq/hapus/(:any)']			= 'admin/infaq/delete/$1';
+$route['admin/infaq']						= 'infaq';
+$route['admin/infaq/tambah']				= 'infaq/add';
+$route['admin/infaq/ubah/(:any)']			= 'infaq/edit/$1';
+$route['admin/infaq/hapus/(:any)']			= 'infaq/delete/$1';
 
-$route['keuangan']						= 'admin/keuangan';
-$route['keuangan/tambah']				= 'admin/keuangan/add';
-$route['keuangan/ubah/(:any)']			= 'admin/keuangan/edit/$1';
-$route['keuangan/hapus/(:any)']			= 'admin/keuangan/delete/$1';
+$route['admin/keuangan']					= 'keuangan';
+$route['admin/keuangan/tambah']				= 'keuangan/add';
+$route['admin/keuangan/ubah/(:any)']		= 'keuangan/edit/$1';
+$route['admin/keuangan/hapus/(:any)']		= 'keuangan/delete/$1';
 
-$route['jumat']							= 'admin/jumat';
-$route['jumat/tambah']					= 'admin/jumat/add';
-$route['jumat/ubah/(:any)']				= 'admin/jumat/edit/$1';
-$route['jumat/hapus/(:any)']			= 'admin/jumat/delete/$1';
+$route['admin/jumat']						= 'jumat';
+$route['admin/jumat/tambah']				= 'jumat/add';
+$route['admin/jumat/ubah/(:any)']			= 'jumat/edit/$1';
+$route['admin/jumat/hapus/(:any)']			= 'jumat/delete/$1';
 
-$route['pesan']							= 'admin/pesan';
-$route['pesan/hapus/(:any)']			= 'admin/pesan/delete/$1';
-/*----------------------------------------------------*/
+$route['admin/pesan']						= 'pesan';
+$route['admin/pesan/hapus/(:any)']			= 'pesan/delete/$1';
+/*---------------------------------------------------*/
 
-$route['default_controller'] = 'welcome';
+/*-----------------Route User------------------------*/
+$route['default_controller'] 				= 'beranda';
+$route['beranda']							= 'beranda';
+
+$route['sejarah']							= 'sejarah';
+
+$route['profile']							= 'profile';
+
+$route['agenda']							= 'artikel/lihat_agenda';
+$route['agenda/(:any)']						= 'artikel/lihat_agenda_detail/$1';
+
+$route['jumat']								= 'jumat/lihat_jumat';
+
+$route['shalat']							= 'shalat';
+
+$route['kajian']							= 'artikel/lihat_kajian';
+$route['kajian/(:any)']						= 'artikel/lihat_kajian_detail/$1';
+
+$route['pengurus']							= 'pengurus/lihat_pengurus';
+
+$route['ustadz']							= 'ustadz/lihat_ustadz';
+
+$route['infaq']								= 'infaq/lihat_infaq';
+
+$route['keuangan']							= 'keuangan/lihat_keuangan';
+
+$route['kontak']							= 'pesan/lihat_kontak';
+
+$route['layanan']							= 'artikel/lihat_layanan';
+$route['layanan/(:any)']					= 'artikel/lihat_layanan_detail/$1';
+
+$route['pengumuman']						= 'artikel/lihat_pengumuman';
+$route['pengumuman/(:any)']					= 'artikel/lihat_pengumuman_detail/$1';
+/*---------------------------------------------------*/
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

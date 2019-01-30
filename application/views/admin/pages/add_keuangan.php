@@ -33,13 +33,7 @@
     <nav class="page-sidebar" data-pages="sidebar">
       <!-- BEGIN SIDEBAR MENU HEADER-->
       <div class="sidebar-header">
-        <img src="<?php echo site_url('assets/img/logo_white.png');?>" alt="logo" class="brand" data-src="<?php echo site_url('assets/img/logo_white.png');?>" data-src-retina="<?php echo site_url('assets/img/logo_white_2x.png');?>" width="78" height="22">
-        <div class="sidebar-header-controls">
-          <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20 hidden-md-down" data-pages-toggle="#appMenu"><i class="fa fa-angle-down fs-16"></i>
-          </button>
-          <button type="button" class="btn btn-link hidden-md-down" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
-          </button>
-        </div>
+        <img src="<?php echo site_url('assets/img/logo_masjid_white.png');?>" alt="logo" class="brand" data-src="<?php echo site_url('assets/img/logo_masjid_white.png');?>" data-src-retina="<?php echo site_url('assets/img/logo_masjid_white_2x.png');?>" width="160" height="60">
       </div>
       <!-- END SIDEBAR MENU HEADER-->
       <!-- START SIDEBAR MENU -->
@@ -47,11 +41,11 @@
         <!-- BEGIN SIDEBAR MENU ITEMS-->
         <ul class="menu-items">
           <li class="m-t-30" >
-            <a href="<?php echo site_url('beranda');?>" class="detailed"><span class="title">Beranda</span></a>
+            <a href="<?php echo site_url('admin/beranda');?>" class="detailed"><span class="title">Beranda</span></a>
             <span class=" icon-thumbnail"><i class="pg-home"></i></span>
           </li><br>
           <li class="">
-            <a href="<?php echo site_url('artikel');?>"><span class="title">Artikel</span></a>
+            <a href="<?php echo site_url('admin/artikel');?>"><span class="title">Artikel</span></a>
             <span class=" icon-thumbnail"><i class="pg-form"></i></span>
           </li><br>
           <li>
@@ -60,11 +54,11 @@
             <span class="icon-thumbnail"><i class="pg-note"></i></span>
             <ul class="sub-menu">
               <li class="">
-                <a href="<?php echo site_url('pengurus');?>">Pengurus</a>
+                <a href="<?php echo site_url('admin/pengurus');?>">Pengurus</a>
                 <span class="icon-thumbnail">P</span>
               </li>
               <li class="">
-                <a href="<?php echo site_url('ustadz');?>">Ustadz</a>
+                <a href="<?php echo site_url('admin/ustadz');?>">Ustadz</a>
                 <span class="icon-thumbnail">U</span>
               </li>
             </ul>
@@ -75,11 +69,11 @@
             <span class="icon-thumbnail"><i class="pg-charts"></i></span>
             <ul class="sub-menu">
               <li class="">
-                <a href="<?php echo site_url('infaq');?>">Infaq</a>
+                <a href="<?php echo site_url('admin/infaq');?>">Infaq</a>
                 <span class="icon-thumbnail">I</span>
               </li>
               <li class="">
-                <a href="<?php echo site_url('keuangan');?>">Keuangan</a>
+                <a href="<?php echo site_url('admin/keuangan');?>">Keuangan</a>
                 <span class="icon-thumbnail">K</span>
               </li>
             </ul>
@@ -91,14 +85,14 @@
             <ul class="sub-menu">
 
               <li class="">
-                <a href="<?php echo site_url('jumat');?>">Jum'at</a>
+                <a href="<?php echo site_url('admin/jumat');?>">Jum'at</a>
                 <span class="icon-thumbnail">J</span>
               </li>
 
             </ul>
           </li><br>
           <li class="">
-            <a href="<?php echo site_url('pesan');?>"><span class="title">Pesan</span></a>
+            <a href="<?php echo site_url('admin/pesan');?>"><span class="title">Pesan</span></a>
             <span class="icon-thumbnail"><i class="pg-mail"></i></span>
           </li>
         </ul>
@@ -119,14 +113,28 @@
         <!-- END MOBILE SIDEBAR TOGGLE -->
         <div class="">
           <div class="brand inline m-l-10">
-            <img src="<?php echo site_url('assets/img/logo.png');?>" alt="logo" data-src="<?php echo site_url('assets/img/logo.png');?>" data-src-retina="<?php echo site_url('assets/img/logo_2x.png');?>" width="78" height="22">
+            <img src="<?php echo site_url('assets/img/logo_masjid.png');?>" alt="logo" data-src="<?php echo site_url('assets/img/logo_masjid.png');?>" data-src-retina="<?php echo site_url('assets/img/logo_masjid_2x.png');?>" width="160" height="75">
           </div>
         </div>
         <div class="">
-          <a href="<?php echo site_url('logout');?>">
+          <script type="text/javascript">
+            function logout()
+            {
+              var jendelaLogout = window.confirm("Anda yakin ingin keluar ?");
+              if(jendelaLogout)
+              {
+                document.location="<?php echo site_url('logout');?>"
+              }
+              else
+              {
+                document.location="<?php echo site_url('admin/keuangan');?>"
+              }
+            }
+          </script>
+          <button onclick="logout()" class="btn btn-sm btn-default">
             <span class="">Logout</span>
             <span class=""><i class="pg-power"></i></span>
-          </a>
+          </button>
         </div>
       </div>
       <!-- END HEADER -->
@@ -135,7 +143,7 @@
         <!-- START PAGE CONTENT -->
         <div class="content sm-gutter">
           <!-- START CONTAINER FLUID -->
-          <div class="container-fluid padding-25 sm-padding-10">
+          <div class="container sm-padding-10 p-t-20 p-l-0 p-r-0">
             <div class=" col-xlg-2 bg-white">
               <div class="col-md-12 m-b-10">
                 <div class="card card-transparent">
@@ -146,48 +154,34 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="card-block">
-                  <div class="row">
-                  <div class="col-lg-3">
-                  <form class="form" method="post" action="<?php echo site_url('admin/keuangan/save'); ?>">
+                  <?php echo validation_errors(); ?>
+                  <form class="form-horizontal" method="post" action="<?php echo site_url('keuangan/save'); ?>">
                     <br>
-                    <div class="form-group">
-                      <label class="">Keterangan</label>
-                      <input type="text" name="keterangan" value="<?php echo set_value('keterangan');?>" class="form-control" required>
-                    </div>
-                    <div class="form-group">   
-                      <label class="">Tanggal</label>
-                      <div class="input-group p-l-0">
-                      <input type="text" name="tanggal" value="<?php echo set_value('tanggal');?>" class="form-control" required><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                    </div>
+                    <div class="control-group col-lg-3">
+                      <label class="control-label">Keterangan</label>
+                      <input type="text" placeholder="keterangan" name="keterangan" value="<?php echo set_value('keterangan');?>" class="form-control" required>
+                      <?php echo form_error('keterangan'); ?>
                     </div>                    
-                    <div class="row">
-                    <div class="col-lg-9">
-                    <div class="form-group">
-                      <label class="">Nominal</label>
-                      <input type="text" name="nominal" value="<?php echo set_value('nominal');?>" class="form-control" required>
-                    </div>
-                    </div>
-                    <div class="col-lg-3">
-                    <div class="form-group">
-                      <label>Aturan</label>
-                      <select name="aturan" class="form-control" required><span class="input-group-addon"><i class="fa fa-angle-down">
-                        <option value="1" selected> + </option>
-                        <option value="2"> - </option>
-                        </i></span> 
-                      </select>
-                    </div>
-                    </div>
+                    <div class="control-group col-lg-3">   
+                      <label class="control-label">Tanggal</label>
+                      <div class="input-group p-l-0">
+                      <input type="text" placeholder=" --/--/----" name="tanggal" class="form-control"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <?php echo form_error('tanggal'); ?>
+                    </div>                    
+                    <div class="control-group col-lg-3">
+                      <label class="control-label">Nominal</label>
+                      <input type="text" placeholder="nominal" name="nominal" class="form-control" required>
+                      <?php echo form_error('nominal'); ?>
                     </div>
                     <br>
-                    <div class="form-group">
+                    <div class="control-group col-lg-3">
                       <div class="controls">
                         <input type="submit" name="btnSubmit" class="btn btn-primary" value="Simpan">
-                        <a href="<?php echo site_url('keuangan'); ?>" class="btn btn-danger">Kembali</a>
+                        <a href="<?php echo site_url('admin/keuangan'); ?>" class="btn btn-danger">Kembali</a>
                       </div>
                     </div>
                   </form>
-                  </div>
-                  </div>
                   </div>
                 </div>
               </div>
@@ -201,12 +195,12 @@
         <div class=" container-fluid  container-fixed-lg footer">
           <!-- START COPYRIGHT -->
           <div class="copyright sm-text-center">
-            <p class="small no-margin text-center">
+            <p class="no-margin text-center">
               <span class="hint-text">Copyright &copy; 2018 </span>
               <span class="font-montserrat">Website Administrator Masjid Al-Hanif</span>.
               <span class="hint-text">All rights reserved. </span>
             </p>
-            <p class="small no-margin text-center">
+            <p class="no-margin text-center">
               <span class="hint-text">Made with <i class="fa fa-heart"></i> by Handika</span>
             </p>
             <div class="clearfix"></div>
