@@ -34,12 +34,13 @@ class Pengurus extends CI_Controller {
 
 	public function delete($id)
 	{
-		$delete = $this->pengurus_model->delete($id);
-
-		if($delete)
-		{
-			redirect('admin/pengurus');
-		}
+		$this->pengurus_model->delete($id);
+	?>
+		<script language="javascript">
+       		    alert('Data telah di hapus.');
+                document.location="<?php echo site_url('admin/pengurus'); ?>";
+        </script>
+	<?php
 	}
 
 	public function lihat_pengurus()
@@ -95,7 +96,12 @@ class Pengurus extends CI_Controller {
 	      	$data['status_kepengurusan'] 	= $this->input->post('status_pengurus');
 
 	      	$this->pengurus_model->update($id,$data);
-	      	redirect('admin/pengurus');
+	    ?>
+	    	<script language="javascript">
+                    alert('Data telah di edit.');
+                    document.location="<?php echo site_url('admin/pengurus'); ?>";
+         	</script>
+        <?php
 		}
 		else{
 			redirect('admin/pengurus/ubah/'.$id);

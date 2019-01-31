@@ -34,12 +34,13 @@ class Jumat extends CI_Controller {
 	
 	public function delete($id)
 	{
-		$delete = $this->jumat_model->delete($id);
-
-		if($delete)
-		{
-			redirect('admin/jumat');
-		}
+		$this->jumat_model->delete($id);
+	?>
+		<script language="javascript">
+       		    alert('Data telah di hapus.');
+                document.location="<?php echo site_url('admin/jumat'); ?>";
+        </script>
+	<?php
 	}
 
 	public function lihat_jumat()
@@ -93,7 +94,12 @@ class Jumat extends CI_Controller {
 		 	$data['khatib']		 = $this->input->post('khatib');
 
 			$this->jumat_model->update($id,$data);
-			redirect('admin/jumat');
+		?>
+			<script language="javascript">
+                    alert('Data telah di edit.');
+                    document.location="<?php echo site_url('admin/jumat'); ?>";
+         	</script>
+        <?php
 		}
 		else{
 			redirect('admin/jumat/ubah/'.$id);

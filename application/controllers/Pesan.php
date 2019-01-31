@@ -37,8 +37,14 @@ class Pesan extends CI_Controller {
 
 		$insert = $this->pesan_model->input_data($data);
         	
-        if($insert){
-  	     	redirect('beranda');
+        if($insert)
+        {
+  	    ?>
+		<script language="javascript">
+       		    alert('Pesan anda berhasil terkirim.');
+                document.location="<?php echo site_url('beranda'); ?>";
+        </script>
+	<?php
         }
         else{
         	redirect('kontak');
@@ -47,12 +53,13 @@ class Pesan extends CI_Controller {
 
 	public function delete($id)
 	{
-		$delete = $this->pesan_model->delete($id);
-
-		if($delete)
-		{
-			redirect('admin/pesan');
-		}
+		$this->pesan_model->delete($id);
+	?>
+		<script language="javascript">
+       		    alert('Data telah di hapus.');
+                document.location="<?php echo site_url('admin/pesan'); ?>";
+        </script>
+	<?php
 	}
 	
 }

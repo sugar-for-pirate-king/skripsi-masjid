@@ -45,7 +45,12 @@ class Artikel extends CI_Controller {
 
 		$letak = array('id_artikel' => $id );
 		$this->artikel_model->delete($letak);
-		return redirect('admin/artikel');
+	?>
+		<script language="javascript">
+       		    alert('Data telah di hapus.');
+                document.location="<?php echo site_url('admin/artikel'); ?>";
+        </script>
+	<?php
 	}
 
 	public function lihat_agenda()
@@ -185,8 +190,12 @@ class Artikel extends CI_Controller {
             @unlink($path.$this->input->post('old_image'));
 
 			$this->artikel_model->update($data,$kondisi);
-            
-            redirect('admin/artikel');
+			?>
+			<script language="javascript">
+                    alert('Data telah di edit.');
+                    document.location="<?php echo site_url('admin/artikel'); ?>";
+         	</script>
+         	<?php
 	        }else { ?>
             <script language="javascript">
                     alert('Gambar harus berformat .jpg .png .gif');
@@ -197,9 +206,13 @@ class Artikel extends CI_Controller {
 	    }else {
 	    	$data['gambar'] = $this->input->post('old_image');
 	    	$this->artikel_model->update($data,$kondisi);
-            
-            redirect('admin/artikel');
+	    	?>
+	    	<script language="javascript">
+                    alert('Data telah di edit.');
+                    document.location="<?php echo site_url('admin/artikel'); ?>";
+         	</script>
+         	<?php
 	    }
  	}
-	
+ 	
 }

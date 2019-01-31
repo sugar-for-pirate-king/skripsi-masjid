@@ -34,12 +34,13 @@ class Ustadz extends CI_Controller {
 
 	public function delete($id)
 	{
-		$delete = $this->ustadz_model->delete($id);
-
-		if($delete)
-		{
-			redirect('admin/ustadz');
-		}
+		$this->ustadz_model->delete($id);
+	?>
+		<script language="javascript">
+       		    alert('Data telah di hapus.');
+                document.location="<?php echo site_url('admin/ustadz'); ?>";
+        </script>
+	<?php
 	}
 
 	public function lihat_ustadz()
@@ -97,7 +98,12 @@ class Ustadz extends CI_Controller {
 	      	$data['pendidikan'] 			= $this->input->post('pendidikan');
 
 	      	$this->ustadz_model->update($id,$data);
-	      	redirect('admin/ustadz');
+	    ?>	    
+	      	<script language="javascript">
+                    alert('Data telah di edit.');
+                    document.location="<?php echo site_url('admin/ustadz'); ?>";
+         	</script>
+        <?php
 		}
 		else{
 			redirect('admin/ustadz/ubah/'.$id);

@@ -35,12 +35,13 @@ class Infaq extends CI_Controller {
 
 	public function delete($id)
 	{
-		$delete = $this->infaq_model->delete($id);
-
-		if($delete)
-		{
-			redirect('admin/infaq');
-		}
+		$this->infaq_model->delete($id);
+	?>
+		<script language="javascript">
+       		    alert('Data telah di hapus.');
+                document.location="<?php echo site_url('admin/infaq'); ?>";
+        </script>
+	<?php
 	}
 
 	public function lihat_infaq()
@@ -88,7 +89,12 @@ class Infaq extends CI_Controller {
 	      	$data['nominal']	= $this->input->post('nominal');
 
 	      	$this->infaq_model->update($id,$data);
-	      	redirect('admin/infaq');
+	    ?>
+	      	<script language="javascript">
+                    alert('Data telah di edit.');
+                    document.location="<?php echo site_url('admin/infaq'); ?>";
+         	</script>
+        <?php
 	   	}
         else{
         	redirect('admin/infaq/ubah/'.$id);

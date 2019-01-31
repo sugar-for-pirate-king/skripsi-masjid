@@ -35,12 +35,13 @@ class Keuangan extends CI_Controller {
 
 	public function delete($id)
 	{
-		$delete = $this->keuangan_model->delete($id);
-
-		if($delete)
-		{
-			redirect('admin/keuangan');
-		}
+		$this->keuangan_model->delete($id);
+	?>
+		<script language="javascript">
+       		    alert('Data telah di hapus.');
+                document.location="<?php echo site_url('admin/keuangan'); ?>";
+        </script>
+	<?php
 	}
 	
 	public function lihat_keuangan()
@@ -88,7 +89,12 @@ class Keuangan extends CI_Controller {
 	      	$data['nominal']	= $this->input->post('nominal');	
 		
 	      	$this->keuangan_model->update($id,$data);
-	      	redirect('admin/keuangan');
+	    ?>
+	    	<script language="javascript">
+                    alert('Data telah di edit.');
+                    document.location="<?php echo site_url('admin/keuangan'); ?>";
+         	</script>
+        <?php
 		}
 		else{
 			redirect('admin/keuangan/ubah/'.$id);
